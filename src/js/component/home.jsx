@@ -15,6 +15,8 @@ const Home = () => {
   const [alert, setAlert] = useState(false);
   const [alert2, setAlert2] = useState(false);
   const [alert3, setAlert3] = useState(false);
+  const [alert4, setAlert4] = useState(false);
+  const regex = /^0+/;
   const img = {
     backgroundImage: `URl(${fondoPared})`,
   };
@@ -88,6 +90,13 @@ const Home = () => {
             Por Favor, no introduzca campos repetidos
           </p>
         ) : null}
+        {alert4 ? (
+          <p className=" Alerta alert alert-warning">
+            El valor no puede tener ceros al inicio (por ejemplo, 01, 001,
+            etc.).
+          </p>
+        ) : null}
+
         <label className="mb-3 fw-semibold fs-1" htmlFor="inputPassword2">
           Introduzca Alarma
         </label>
@@ -100,13 +109,15 @@ const Home = () => {
               !newAlarm.includes(e.target.value.trim()) &&
               e.target.value <= 999999 &&
               e.target.value >= 1 &&
-              e.target.value.toString().length <= 6
+              e.target.value.toString().length <= 6 &&
+              !regex.test(e.target.value)
             ) {
               setNewAlarm([...newAlarm, e.target.value]);
               e.target.value = "";
               setAlert(false);
               setAlert2(false);
               setAlert3(false);
+              setAlert4(false);
             } else {
               if (
                 (e.target.value.toString().length > 6 && e.key == "Enter") ||
@@ -121,10 +132,12 @@ const Home = () => {
                 setAlert(true);
                 setAlert2(false);
                 setAlert3(false);
+                setAlert4(false);
               } else if (e.target.value.trim() == "" && e.key == "Enter") {
                 setAlert2(true);
                 setAlert(false);
                 setAlert3(false);
+                setAlert4(false);
               } else if (
                 e.key == "Enter" &&
                 newAlarm.includes(e.target.value.trim())
@@ -132,12 +145,19 @@ const Home = () => {
                 setAlert2(false);
                 setAlert(false);
                 setAlert3(true);
+                setAlert4(false);
+              } else if (e.key == "Enter" && regex.test(e.target.value)) {
+                setAlert(false);
+                setAlert2(false);
+                setAlert3(false);
+                setAlert4(true);
               }
             }
           }}
           type="number"
           className=" form-control rounded text-center mb-3 "
           id="alarm"
+          inputMode="numeric"
           placeholder="Introduzca Alarma"
           min="0"
           max="999999"
