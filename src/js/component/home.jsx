@@ -29,9 +29,8 @@ const Home = () => {
         newAlarm={newAlarm}
         setNewAlarm={setNewAlarm}
         setIsAlarmOn={setIsAlarmOn}
-        setIsRunning={setIsRunning}
-        setRegressive={setRegressive}
         setAlarmOff={setAlarmOff}
+        alarmOff={alarmOff}
       />
       <Chronometer
         timer={timer}
@@ -41,8 +40,13 @@ const Home = () => {
         setIsRunning={setIsRunning}
         setRegressive={setRegressive}
         setIsAlarmOn={setIsAlarmOn}
+        setAlarmOff={setAlarmOff}
       />
-      <AlarmSound setIsAlarmOn={setIsAlarmOn} isAlarmOn={isAlarmOn} />
+      <AlarmSound
+        setIsAlarmOn={setIsAlarmOn}
+        isAlarmOn={isAlarmOn}
+        setAlarmOff={setAlarmOff}
+      />
     </div>
   );
 };
