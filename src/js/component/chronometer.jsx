@@ -8,6 +8,7 @@ const Chronometer = ({
   regressive,
   setRegressive,
   setIsAlarmOn,
+  setAlarmOff,
 }) => {
   useEffect(() => {
     let timeOut;
@@ -82,6 +83,7 @@ const Chronometer = ({
             setIsRunning(!isRunning);
             setRegressive(false);
             setIsAlarmOn(false);
+            setAlarmOff(false)
           }}
         >
           {`${isRunning ? "STOP" : "START"}`}
@@ -93,6 +95,7 @@ const Chronometer = ({
             setIsRunning(false);
             setRegressive(false);
             setIsAlarmOn(false);
+            setAlarmOff(false)
           }}
         >
           RESET
@@ -107,6 +110,7 @@ const Chronometer = ({
             setRegressive(!regressive);
             setIsRunning(false);
             setIsAlarmOn(false);
+            setAlarmOff(false)
           }}
         >
           {regressive && timer > 0 ? "STOP" : "ATRÁS"}
