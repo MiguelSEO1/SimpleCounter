@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import alarm from "../../sound/alarm.mp3";
 
-const AlarmSound = ({ isAlarmOn, setIsAlarmOn }) => {
+const AlarmSound = ({ isAlarmOn, setIsAlarmOn, setAlarmOff }) => {
   const audioRef = useRef(null);
 
   useEffect(() => {
@@ -27,6 +27,7 @@ const AlarmSound = ({ isAlarmOn, setIsAlarmOn }) => {
       }`}
       onClick={() => {
         setIsAlarmOn(!isAlarmOn);
+        setAlarmOff(false)
       }}
     >
       {isAlarmOn ? "STOP ALARM" : "START ALARM"}
