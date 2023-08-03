@@ -5,8 +5,7 @@ const ImputAlarmOn = ({
   setNewAlarm,
   timer,
   setIsAlarmOn,
-  setIsRunning,
-  setRegressive,
+  setAlarmOff
 }) => {
   const [alert, setAlert] = useState(false);
   const [alert2, setAlert2] = useState(false);
@@ -15,11 +14,11 @@ const ImputAlarmOn = ({
   const regex = /^0+/;
 
   useEffect(() => {
-    console.log(timer, "BBBB");
-    if (newAlarm.includes(timer.toString())) {
+    console.log(nabo, "BBBB");
+    if (newAlarm.includes(timer.toString()) && !alarmOff) {
       setIsAlarmOn(true);
-      setIsRunning(false);
-      setRegressive(false);
+
+      setAlarOff(true);
     }
   }, [timer]);
 
