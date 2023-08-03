@@ -12,6 +12,7 @@ const Home = () => {
   const [isRunning, setIsRunning] = useState(false);
   const [regressive, setRegressive] = useState(false);
   const [isAlarmOn, setIsAlarmOn] = useState(false);
+  const [alarmOff, setAlarmOff] = useState([]);
   const [newAlarm, setNewAlarm] = useState([]);
 
   const img = {
